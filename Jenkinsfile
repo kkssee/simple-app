@@ -32,7 +32,7 @@ pipeline {
             }
         }
 
-        stage('Prepare JAR File') {
+        /*stage('Prepare JAR File') {
             steps {
                 script {
                     echo "Preparing JAR file..."
@@ -62,7 +62,7 @@ pipeline {
                     sh "docker build -t ${DOCKER_IMAGE} ."
                 }
             }
-        }
+        }*/
         /*
         stage('Push to Docker Hub') {
             steps {
