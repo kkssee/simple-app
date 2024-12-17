@@ -79,7 +79,7 @@ pipeline {
             }
         }*/
         
-        /*stage('Run Docker Container') {
+        stage('Run Docker Container') {
             steps {
                 script {
                     echo "Running Docker container..."
@@ -87,9 +87,10 @@ pipeline {
                     docker ps -q --filter 'ancestor=${DOCKER_IMAGE}' | xargs --no-run-if-empty docker stop
                     docker run -d ${DOCKER_IMAGE}
                     """
+                    echo "Docker container is running!"
                 }
             }
-        }*/
+        }
     }
     /*
     post {
