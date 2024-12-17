@@ -32,7 +32,7 @@ pipeline {
             }
         }
 
-        /*stage('Prepare JAR File') {
+        stage('Prepare JAR File') {
             steps {
                 script {
                     echo "Preparing JAR file..."
@@ -49,7 +49,7 @@ pipeline {
                 }
             }
         }
-        
+        /*
         stage('Build Docker Image') {
             steps {
                 script {
