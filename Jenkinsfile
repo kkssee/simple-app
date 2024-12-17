@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "cwisky/simple-app:1.0"
-        GITHUB_REPO = "https://github.com/cwisky/simple-app.git"
-        JAR_FILE = "simple-app.jar"
+        DOCKER_IMAGE = "kkssee/simple:1.0"
+        GITHUB_REPO = "https://github.com/kkssee/simple-app.git"
+        JAR_FILE = "simple.jar"
     }
 
     stages {
@@ -23,7 +23,7 @@ pipeline {
                     $class: 'GitSCM',
                     branches: [[name: 'main']],
                     userRemoteConfigs: [[
-                        credentialsId: 'GitHub_ID_PWD',       // Jenkins에서 github의 id, pwd를 등록하고 아이디를 'GitHub_ID_PWD' 으로 지정해야 함
+                        credentialsId: 'GitHub_login',       // Jenkins에서 github의 id, pwd를 등록하고 아이디를 'GitHub_login' 으로 지정해야 함
                         url: GITHUB_REPO
                     ]]
                 ])
@@ -56,8 +56,8 @@ pipeline {
                     echo "Building Docker image..." 
                     writeFile file: 'Dockerfile', text: """
                     FROM openjdk:21-slim
-                    COPY ${JAR_FILE} /simple-app.jar
-                    CMD ["java", "-jar", "/simple-app.jar"]
+                    COPY ${JAR_FILE} /simple.jar
+                    CMD ["java", "-jar", "/simple.jar"]
                     """
                     sh "docker build -t ${DOCKER_IMAGE} ."
                 }
@@ -78,7 +78,7 @@ pipeline {
             }
         }*/
         
-        stage('Run Docker Container') {
+        /*stage('Run Docker Container') {
             steps {
                 script {
                     echo "Running Docker container..."
@@ -89,7 +89,7 @@ pipeline {
                 }
             }
         }
-    }
+    }*/
     /*
     post {
         always {
