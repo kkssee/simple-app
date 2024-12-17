@@ -49,7 +49,7 @@ pipeline {
                 }
             }
         }
-        /*
+        
         stage('Build Docker Image') {
             steps {
                 script {
@@ -62,7 +62,7 @@ pipeline {
                     sh "docker build -t ${DOCKER_IMAGE} ."
                 }
             }
-        }*/
+        }
         /*
         stage('Push to Docker Hub') {
             steps {
