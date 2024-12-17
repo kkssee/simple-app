@@ -60,6 +60,7 @@ pipeline {
                     CMD ["java", "-jar", "/simple.jar"]
                     """
                     sh "docker build -t ${DOCKER_IMAGE} ."
+                    echo "Docker image created!"
                 }
             }
         }
